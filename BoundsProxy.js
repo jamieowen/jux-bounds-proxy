@@ -1,6 +1,6 @@
 
 var BoundsBase = require( 'jux-bounds' );
-/**
+
 var Bounds = function(){
 	BoundsBase.call( this );
 	this.data = null;
@@ -8,7 +8,7 @@ var Bounds = function(){
 
 Bounds.prototype = Object.create( BoundsBase.prototype );
 Bounds.prototype.constructor = Bounds;
-**/
+
 
 var BoundsProxy = function(){
 
@@ -36,7 +36,7 @@ BoundsProxy.prototype = {
 	constructor: BoundsProxy,
 
 	create: function( data ){
-		//return new Bounds();
+		return new Bounds();
 	},
 
 
@@ -45,8 +45,8 @@ BoundsProxy.prototype = {
 			return obj.data;
 		},
 
-		set: function(){
-
+		set: function( bounds, data ){
+			bounds.data = data;
 		}
 	},
 
