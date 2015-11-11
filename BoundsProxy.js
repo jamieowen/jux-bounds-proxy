@@ -1,17 +1,19 @@
 
 var BoundsBase = require( 'jux-bounds' );
-
+/**
 var Bounds = function(){
 	BoundsBase.call( this );
 	this.data = null;
 };
 
 Bounds.prototype = Object.create( BoundsBase.prototype );
+Bounds.prototype.constructor = Bounds;
+**/
 
 var BoundsProxy = function(){
 
 };
-
+/**
 BoundsProxy.extend = function( newProps ){
 
 	var ExtendedBoundsProxy = function(){
@@ -25,14 +27,18 @@ BoundsProxy.extend = function( newProps ){
 	}
 	return new ExtendedBoundsProxy();
 };
+**/
 
-module.exports = BoundsProxy;
+
 
 BoundsProxy.prototype = {
 
+	constructor: BoundsProxy,
+
 	create: function( data ){
-		return new Bounds();
+		//return new Bounds();
 	},
+
 
 	data: {
 		get: function( obj ){
@@ -46,36 +52,36 @@ BoundsProxy.prototype = {
 
 	bounds: {
 		get: function( obj, bounds ){
-			bounds.left = obj.left;
-			bounds.right = obj.right;
-			bounds.top = obj.top;
-			bounds.bottom = obj.bottom
+			bounds.x = obj.x;
+			bounds.y = obj.y;
+			bounds.width = obj.width;
+			bounds.height = obj.height;
 		},
 
 		set: function( obj, left, top, right, bottom ){
-			obj.left = left;
-			obj.right = right;
-			obj.top = top;
-			obj.bottom = bottom
+			obj.x = left;
+			obj.y = top;
+			obj.width = right - left;
+			obj.height = bottom - top;
 		}
 	},
 
 	position: {
 		get: function( obj, point ){
-			point.x = obj.left;
-			point.y = obj.top;
+			point.x = obj.x;
+			point.y = obj.y;
 		},
 
 		set: function( obj, x, y ){
-			obj.left = x;
-			obj.top = y;
+			obj.x = x;
+			obj.y = y;
 		}
 	},
 
 	size: {
-		get: function( obj, rect ){
-			rect.width = obj.width;
-			rect.height = obj.height;
+		get: function( obj, bounds ){
+			bounds.width = obj.width;
+			bounds.height = obj.height;
 		},
 
 		set: function( obj, width, height ){
@@ -83,11 +89,12 @@ BoundsProxy.prototype = {
 			obj.height = height;
 		}
 	}
-
-	// x,
-	// y,
-	// width,
-	// height
-	// rotation?
-
 };
+
+// x,
+// y,
+// width,
+// height
+// rotation?
+
+module.exports = BoundsProxy;
