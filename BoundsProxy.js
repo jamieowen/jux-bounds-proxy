@@ -39,56 +39,48 @@ BoundsProxy.prototype = {
 		return new Bounds();
 	},
 
-
-	data: {
-		get: function( obj ){
-			return obj.data;
-		},
-
-		set: function( bounds, data ){
-			bounds.data = data;
-		}
+	data_get: function( obj ){
+		return obj.data;
 	},
 
-	bounds: {
-		get: function( obj, bounds ){
-			bounds.x = obj.x;
-			bounds.y = obj.y;
-			bounds.width = obj.width;
-			bounds.height = obj.height;
-		},
-
-		set: function( obj, left, top, right, bottom ){
-			obj.x = left;
-			obj.y = top;
-			obj.width = right - left;
-			obj.height = bottom - top;
-		}
+	data_set: function( bounds, data ){
+		bounds.data = data;
 	},
 
-	position: {
-		get: function( obj, point ){
-			point.x = obj.x;
-			point.y = obj.y;
-		},
-
-		set: function( obj, x, y ){
-			obj.x = x;
-			obj.y = y;
-		}
+	bounds_get: function( obj, bounds ){
+		bounds.x = obj.x;
+		bounds.y = obj.y;
+		bounds.width = obj.width;
+		bounds.height = obj.height;
 	},
 
-	size: {
-		get: function( obj, bounds ){
-			bounds.width = obj.width;
-			bounds.height = obj.height;
-		},
+	bounds_set: function( obj, left, top, right, bottom ){
+		obj.x = left;
+		obj.y = top;
+		obj.width = right - left;
+		obj.height = bottom - top;
+	},
 
-		set: function( obj, width, height ){
-			obj.width = width;
-			obj.height = height;
-		}
+	position_get: function( obj, point ){
+		point.x = obj.x;
+		point.y = obj.y;
+	},
+
+	position_set: function( obj, x, y ){
+		obj.x = x;
+		obj.y = y;
+	},
+
+	size_get: function( obj, bounds ){
+		bounds.width = obj.width;
+		bounds.height = obj.height;
+	},
+
+	size_set: function( obj, width, height ){
+		obj.width = width;
+		obj.height = height;
 	}
+
 };
 
 // x,
